@@ -1,0 +1,3 @@
+type authenticationData = {
+    id: string
+}

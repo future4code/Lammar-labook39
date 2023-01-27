@@ -1,9 +1,10 @@
 export class Post {
     constructor(
         private id:string,
-        private pic_url:string,
+        private photo:string,
         private description:string,
-        private date:string,
-        private type:string
+        private type:postType,
+        private createdAt:Date,
+        private authorId:string
     ){}
 }
