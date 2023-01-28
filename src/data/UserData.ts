@@ -8,4 +8,9 @@ export class UserData extends BaseDB {
         await UserData.connection(UserData.tableName)
         .insert(input)
     }
+
+    async getUsers():Promise<User[]> {
+        return await UserData.connection(UserData.tableName)
+        .select()
+    }
 }
