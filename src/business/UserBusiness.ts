@@ -1,4 +1,3 @@
-import { UserData } from "../data/UserData"
 import { User } from "../model/User"
 import { createUserDTO } from "../model/userDTO"
 import { generateId } from "../services/idGenerator"
@@ -7,8 +6,11 @@ import {
     NameNotProvided, PasswordNotProvided
 } from "../error/UserError"
 import { CustomError } from "../error/CustomError"
+import { UserRepository } from "./UserRepository"
 
 export class UserBusiness {
+    constructor(private userData:UserRepository){}
+
     async create(input: createUserDTO): Promise<void> {
         try {
             const { name, email, password } = input
@@ -38,8 +40,7 @@ export class UserBusiness {
                 password
             )
 
-            const userData = new UserData()
-            await userData.create(newUser)
+            await this.userData.create(newUser)
 
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
@@ -47,7 +48,10 @@ export class UserBusiness {
     }
 
     async getUsers(): Promise<User[]> {
-        const userData = new UserData()
-        return userData.getUsers()
+        try {
+            return await this.userData.getUsers()
+        } catch (error:any) {
+            throw new CustomError(error.statusCode, error.message)
+        }
     }
 }
