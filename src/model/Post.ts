@@ -4,7 +4,18 @@ export class Post {
         private photo:string,
         private description:string,
         private type:postType,
-        private createdAt:Date,
-        private authorId:string
+        private author_id:string
     ){}
+}
+
+export interface createPostDTO {
+    photo:string,
+    description:string,
+    type:postType,
+    authorId:string
+}
+
+enum postType {
+    NORMAL = 'Normal',
+    EVENT = 'Event'
 }

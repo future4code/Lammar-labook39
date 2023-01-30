@@ -1,5 +1,4 @@
-import { User } from "../model/User"
-import { createUserDTO } from "../model/userDTO"
+import { createUserDTO, User } from "../model/User"
 import { generateId } from "../services/idGenerator"
 import {
     EmailNotProvided, InvalidEmail,

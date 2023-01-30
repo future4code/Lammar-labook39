@@ -18,6 +18,15 @@ connection
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
       )
+
+      CREATE TABLE IF NOT EXISTS labook_friendship(
+         user1_id VARCHAR(255),
+         user2_id VARCHAR(255),
+         friends_since TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+         primary key (user1_id, user2_id),
+         FOREIGN KEY (user1_id) REFERENCES labook_users (id),
+         FOREIGN KEY (user2_id) REFERENCES labook_users (id)
+      );
    `)
    .then(() => {
    console.log(`Tables created successfully!`)

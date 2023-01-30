@@ -3,11 +3,26 @@ POST http://localhost:3003/users/create
 Content-Type: application/json
 
 {
-    "name": "user4",
-    "email": "user4@email.com",
+    "name": "user5",
+    "email": "user5@email.com",
     "password": "123456789"
 }
 
 ### Get all users
 GET http://localhost:3003/users/getusers
+Content-Type: application/json
+
+### Create post
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo":"https://picsum.photos/150",
+    "description":"Post5",
+    "type":"event",
+    "authorId":"01717209-d764-4450-a83e-c47a31cd0ec9"
+}
+
+### Get post info
+GET http://localhost:3003/post/getpost/1481c540-c3fc-48bb-92f4-cc57ed43af58
 Content-Type: application/json

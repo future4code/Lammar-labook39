@@ -1,8 +1,11 @@
 import { app } from "./app"
+import { postRouter } from "./routes/postRouter"
 import { userRouter } from "./routes/userRouter"
 
 
+
 app.use("/users", userRouter)
+app.use("/post", postRouter)
 
 
 // app.post('/post', async (req: Request, res: Response) => {
