@@ -1,7 +1,9 @@
-import { generateId } from "../services/idGenerator"
 import { CustomError } from "../error/CustomError"
 import { PostRepository } from "./PostRepository"
 import { createPostDTO, Post } from "../model/Post"
+import { IdGenerator } from "../services/IdGenerator"
+import { PostNotFound } from "../error/PostError"
+
 
 export class PostBusiness {
     constructor(private postData: PostRepository) { }
@@ -10,7 +12,8 @@ export class PostBusiness {
         try {
             const { photo, description, type, authorId } = input
 
-            const id = generateId()
+            const idGenerator = new IdGenerator()
+            const id: string = idGenerator.generateId()
 
             const newPost = new Post(
                 id,
@@ -29,7 +32,13 @@ export class PostBusiness {
 
     async getPost(id: string): Promise<Post[]> {
         try {
-            return await this.postData.getPost(id)
+            const post = await this.postData.getPost(id)
+
+            if (post.length < 1) {
+                throw new PostNotFound
+            }
+
+            return post
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
         }
