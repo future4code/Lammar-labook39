@@ -1,14 +1,14 @@
 import { createUserDTO, User } from "../model/User"
-import { generateId } from "../services/idGenerator"
 import {
     EmailNotProvided, InvalidEmail,
     NameNotProvided, PasswordNotProvided
 } from "../error/UserError"
 import { CustomError } from "../error/CustomError"
 import { UserRepository } from "./UserRepository"
+import { IdGenerator } from "../services/IdGenerator"
 
 export class UserBusiness {
-    constructor(private userData:UserRepository){}
+    constructor(private userData: UserRepository) { }
 
     async create(input: createUserDTO): Promise<void> {
         try {
@@ -30,7 +30,8 @@ export class UserBusiness {
                 throw new InvalidEmail
             }
 
-            const id = generateId()
+            const idGenerator = new IdGenerator()
+            const id: string = idGenerator.generateId()
 
             const newUser = new User(
                 id,
@@ -49,7 +50,7 @@ export class UserBusiness {
     async getUsers(): Promise<User[]> {
         try {
             return await this.userData.getUsers()
-        } catch (error:any) {
+        } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
         }
     }
