@@ -6,10 +6,10 @@ import { BaseDB } from "./BaseDB"
 export class UserData extends BaseDB implements UserRepository {
     private static tableName = "labook_users"
 
-    async create(input:User):Promise<void> {
+    async create(newUser:User):Promise<void> {
         try {
             await UserData.connection(UserData.tableName)
-            .insert(input)
+            .insert(newUser)
         } catch (error:any) {
             throw new CustomError(error.statusCode, error.message)
         }
