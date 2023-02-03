@@ -17,12 +17,20 @@ export class FriendshipData extends BaseDB implements FriendshipRepository {
 
     async delete(friendship: Friendship): Promise<number> {
         try {
-            const result = await FriendshipData.connection(FriendshipData.tableName)
+            let result = await FriendshipData.connection(FriendshipData.tableName)
                 .where({
-                    user1_id: `${friendship['user1_id']}`,
-                    user2_id: `${friendship['user2_id']}`
+                    user1_id: `${friendship.getUser1Id()}`,
+                    user2_id: `${friendship.getUser2Id()}`
                 })
                 .del()
+            if (result === 0) {
+                result = await FriendshipData.connection(FriendshipData.tableName)
+                    .where({
+                        user1_id: `${friendship.getUser2Id()}`,
+                        user2_id: `${friendship.getUser1Id()}`
+                    })
+                    .del()
+            }
             return (result)
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)

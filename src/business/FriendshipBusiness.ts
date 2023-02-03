@@ -6,10 +6,9 @@ import { FriendshipRepository } from "./FriendshipRepository"
 export class FriendshipBusiness {
     constructor(private friendshipData: FriendshipRepository) { }
 
-    async create(friendship: Friendship): Promise<void> {
+    async create(newFriendship: Friendship): Promise<void> {
         try {
-
-            await this.friendshipData.create(friendship)
+            await this.friendshipData.create(newFriendship)
 
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
@@ -18,7 +17,6 @@ export class FriendshipBusiness {
 
     async delete(friendship: Friendship): Promise<void> {
         try {
-
             const result = await this.friendshipData.delete(friendship)
 
             if (result === 0) {

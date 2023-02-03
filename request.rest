@@ -3,8 +3,8 @@ POST http://localhost:3003/users/create
 Content-Type: application/json
 
 {
-    "name": "user6",
-    "email": "user6@email.com",
+    "name": "user24",
+    "email": "user24@email.com",
     "password": "123456789"
 }
 
@@ -20,7 +20,7 @@ Content-Type: application/json
     "photo":"https://picsum.photos/150",
     "description":"Post6",
     "type":"event",
-    "authorId":"01717209-d764-4450-a83e-c47a31cd0ec9"
+    "authorId":"93ae9c4e-606e-4acf-8aa7-c3098de7cdc3"
 }
 
 ### Get post info
@@ -32,8 +32,8 @@ POST http://localhost:3003/friendship/create
 Content-Type: application/json
 
 {
-    "userOneId": "99c2e65d-d096-4566-abc7-b155e8549f0f",
-    "userTwoId": "98fd03a5-b9ec-45d1-85e2-71f965f890e1"
+    "userOneId": "ed52e284-8e70-4949-99ee-cf246fe4b67f",
+    "userTwoId": "93ae9c4e-606e-4acf-8aa7-c3098de7cdc3"
 }
 
 ### Delete friendship
@@ -41,6 +41,6 @@ DELETE http://localhost:3003/friendship/delete
 Content-Type: application/json
 
 {
-    "userOneId": "23ee5820-8bc6-409b-822a-e65edae4ce0e",
-    "userTwoId": "98fd03a5-b9ec-45d1-85e2-71f965f890e1"
+    "userOneId": "ed52e284-8e70-4949-99ee-cf246fe4b67f",
+    "userTwoId": "6896ac79-018d-4b35-bffa-b45d54b3b5aa"
 }
