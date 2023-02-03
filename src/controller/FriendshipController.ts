@@ -11,10 +11,6 @@ export class FriendshipController {
 
             const { userOneId, userTwoId } = req.body
 
-            if (!userOneId || !userTwoId) {
-                throw new IdentifyUsers
-            }
-
             const newFriendship = new Friendship(userOneId, userTwoId)
 
             await this.friendshipBusiness.create(newFriendship)
@@ -31,10 +27,6 @@ export class FriendshipController {
 
             const { userOneId, userTwoId } = req.body
 
-            if (!userOneId || !userTwoId) {
-                throw new IdentifyUsers
-            }
-
             const friendship = new Friendship(userOneId, userTwoId)
 
             await this.friendshipBusiness.delete(friendship)
@@ -45,4 +37,19 @@ export class FriendshipController {
             res.status(error.statusCode || 400).send(error.message || error.sqlMessage)
         }
     }
+
+    // async getFeed(req:Request, res:Response): Promise<void>{
+    //     try {
+            
+    //         const { id } = req.params
+
+    //         // Insert error
+
+    //         const feed = await this.friendshipBusiness.getFeed(id)
+
+    //         res.status(200).send(feed)
+    //     } catch (error:any) {
+    //         res.status(error.statusCode || 400).send(error.message || error.sqlMessage)
+    //     }
+    // }
 }

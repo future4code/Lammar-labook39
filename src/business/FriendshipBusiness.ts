@@ -1,5 +1,5 @@
 import { CustomError } from "../error/CustomError"
-import { FriendshipNotFound } from "../error/FriendshipError"
+import { FriendshipNotFound, IdentifyUsers } from "../error/FriendshipError"
 import { Friendship } from "../model/Friendship"
 import { FriendshipRepository } from "./FriendshipRepository"
 
@@ -8,6 +8,10 @@ export class FriendshipBusiness {
 
     async create(newFriendship: Friendship): Promise<void> {
         try {
+            if (!newFriendship.getUser1Id() || !newFriendship.getUser2Id()) {
+                throw new IdentifyUsers
+            }
+
             await this.friendshipData.create(newFriendship)
 
         } catch (error: any) {
@@ -17,6 +21,11 @@ export class FriendshipBusiness {
 
     async delete(friendship: Friendship): Promise<void> {
         try {
+
+            if (!friendship.getUser1Id() || !friendship.getUser2Id()) {
+                throw new IdentifyUsers
+            }
+
             const result = await this.friendshipData.delete(friendship)
 
             if (result === 0) {
@@ -27,4 +36,12 @@ export class FriendshipBusiness {
             throw new CustomError(error.statusCode, error.message)
         }
     }
+
+    // async getFeed(id:string):Promise<void> {
+    //     try {
+    //         const feed = await this.friendshipData.getFeed(id)
+    //     } catch (error:any) {
+    //         throw new CustomError(error.statusCode, error.message)
+    //     }
+    // }
 }
