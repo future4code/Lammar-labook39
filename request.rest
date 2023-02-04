@@ -3,8 +3,8 @@ POST http://localhost:3003/users/create
 Content-Type: application/json
 
 {
-    "name": "user24",
-    "email": "user24@email.com",
+    "name": "user6",
+    "email": "user6@email.com",
     "password": "123456789"
 }
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### Get post info
-GET http://localhost:3003/post/getpost/1481c540-c3fc-48bb-92f4-cc57ed43af58
+GET http://localhost:3003/post/getpost/00b5c9ce-8a70-4687-a765-9d388a2c283e
 Content-Type: application/json
 
 ### Create friendship
@@ -32,8 +32,8 @@ POST http://localhost:3003/friendship/create
 Content-Type: application/json
 
 {
-    "userOneId": "ed52e284-8e70-4949-99ee-cf246fe4b67f",
-    "userTwoId": "93ae9c4e-606e-4acf-8aa7-c3098de7cdc3"
+    "userOneId": "1fd42593-a321-49b9-b6ea-c882d477f9dc",
+    "userTwoId": "3dc0626a-0cbb-4516-9ee4-17556a2e89b9"
 }
 
 ### Delete friendship
@@ -41,6 +41,10 @@ DELETE http://localhost:3003/friendship/delete
 Content-Type: application/json
 
 {
-    "userOneId": "ed52e284-8e70-4949-99ee-cf246fe4b67f",
-    "userTwoId": "6896ac79-018d-4b35-bffa-b45d54b3b5aa"
+    "userOneId": "1fd42593-a321-49b9-b6ea-c882d477f9dc",
+    "userTwoId": "3dc0626a-0cbb-4516-9ee4-17556a2e89b9"
 }
+
+### Get Feed
+GET http://localhost:3003/friendship/getfeed/ed52e284-8e70-4949-99ee-cf246fe4b67f
+Content-Type: application/json

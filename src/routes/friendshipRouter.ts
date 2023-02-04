@@ -11,3 +11,4 @@ const friendshipController = new FriendshipController(friendshipBusiness)
 
 friendshipRouter.post("/create", (req, res) => friendshipController.create(req, res))
 friendshipRouter.delete("/delete", (req, res) => friendshipController.delete(req, res))
+friendshipRouter.get("/getfeed/:id", (req, res) => friendshipController.getFeed(req, res))

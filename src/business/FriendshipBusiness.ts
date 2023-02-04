@@ -1,6 +1,7 @@
 import { CustomError } from "../error/CustomError"
 import { FriendshipNotFound, IdentifyUsers } from "../error/FriendshipError"
 import { Friendship } from "../model/Friendship"
+import { Post } from "../model/Post"
 import { FriendshipRepository } from "./FriendshipRepository"
 
 export class FriendshipBusiness {
@@ -37,11 +38,17 @@ export class FriendshipBusiness {
         }
     }
 
-    // async getFeed(id:string):Promise<void> {
-    //     try {
-    //         const feed = await this.friendshipData.getFeed(id)
-    //     } catch (error:any) {
-    //         throw new CustomError(error.statusCode, error.message)
-    //     }
-    // }
+    async getFeed(id: string): Promise<Post[]> {
+        try {
+            const feed = await this.friendshipData.getFeed(id)
+
+            // if (feed.length === 0) {
+            //     throw new FriendshipNotFound
+            // }
+
+            return feed
+        } catch (error: any) {
+            throw new CustomError(error.statusCode, error.message)
+        }
+    }
 }
