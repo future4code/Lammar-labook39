@@ -1,5 +1,5 @@
 # labook-39
-## Repositório do projeto Labook com alguns recursos Backend de uma rede social.
+## Repositório do projeto Labook com recursos Backend de uma rede social.
 
 - Arquitetura Limpa (Clean Architecture)
 - POO (OOP)
