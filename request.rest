@@ -1,0 +1,50 @@
+### Create user
+POST http://localhost:3003/users/create
+Content-Type: application/json
+
+{
+    "name": "user7",
+    "email": "user7@email.com",
+    "password": "123456789"
+}
+
+### Get all users
+GET http://localhost:3003/users/getusers
+Content-Type: application/json
+
+### Create post
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo":"https://picsum.photos/150",
+    "description":"Post6",
+    "type":"event",
+    "authorId":"93ae9c4e-606e-4acf-8aa7-c3098de7cdc3"
+}
+
+### Get post info
+GET http://localhost:3003/post/getpost/00b5c9ce-8a70-4687-a765-9d388a2c283e
+Content-Type: application/json
+
+### Create friendship
+POST http://localhost:3003/friendship/create
+Content-Type: application/json
+
+{
+    "userOneId": "1fd42593-a321-49b9-b6ea-c882d477f9dc",
+    "userTwoId": "3dc0626a-0cbb-4516-9ee4-17556a2e89b9"
+}
+
+### Delete friendship
+DELETE http://localhost:3003/friendship/delete
+Content-Type: application/json
+
+{
+    "userOneId": "1fd42593-a321-49b9-b6ea-c882d477f9dc",
+    "userTwoId": "3dc0626a-0cbb-4516-9ee4-17556a2e89b9"
+}
+
+### Get Feed
+GET http://localhost:3003/friendship/getfeed/ed52e284-8e70-4949-99ee-cf246fe4b67f
+Content-Type: application/json
